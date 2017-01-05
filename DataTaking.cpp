@@ -30,7 +30,7 @@ int main()
 
   ViInt64 NumRecords=500;
   ViInt64 points=100000;
-  ViReal64 SampleRate=5.0E7;
+  ViReal64 SampleRate=20.0E6;
 
   ViStatus status;
   ViSession session;
@@ -129,11 +129,11 @@ int main()
 
   Int_t fileNum=1;
 
-  while (fileNum<11){
+  while (fileNum<2){
 
   status =AgMD1_InitiateAcquisition(session);
   fprintf(stderr, "Start Acquisition of %08d-th File \n", fileNum);    
-  status = AgMD1_WaitForAcquisitionComplete(session, 100000);
+  status = AgMD1_WaitForAcquisitionComplete(session, 10000000);
 
   /////////////////////////////////////////
   ////////////// ROOT Setup ///////////////
@@ -200,7 +200,7 @@ int main()
   }  
 
   f->cd();
-  //t->Write();
+  t->Write();
   f->Close();
   fileNum++;
   }  
